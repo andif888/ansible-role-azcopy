@@ -1,0 +1,21 @@
+---
+# tasks file for ansible-role-azcopy
+- name: azcopy - download and install
+  unarchive:
+    src: '{{ azcopy_download_url }}'
+    dest: /tmp
+    remote_src: yes
+
+- name: azcopy - copy to /usr/local/bin
+  copy:
+    src: '/tmp/azcopy_linux_amd64_{{ azcopy_version }}/azcopy'
+    dest: /usr/local/bin/azcopy
+    remote_src: yes
+    owner: root
+    group: root
+    mode: 0755
+
+- name: azcopy - Delete temporary extract dir
+  file:
+    path: '/tmp/azcopy_linux_amd64_{{ azcopy_version }}'
+    state: absent

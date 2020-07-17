@@ -1,0 +1,4 @@
+---
+# defaults file for ansible-role-azcopy
+azcopy_version: 10.5.0
+azcopy_download_url: https://aka.ms/downloadazcopy-v10-linux
