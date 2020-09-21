@@ -6,16 +6,16 @@
     dest: /tmp
     remote_src: yes
 
-- name: azcopy - copy to /usr/local/bin
+- name: azcopy - copy to install dir
   copy:
-    src: '/tmp/azcopy_linux_amd64_{{ azcopy_version }}/azcopy'
-    dest: /usr/local/bin/azcopy
+    src: '/tmp/{{ azcopy_unzip_subfoldername }}/{{ azcopy_filename_exe }}'
+    dest: '{{ azcopy_install_dir }}/{{ azcopy_filename_exe }}'
     remote_src: yes
-    owner: root
-    group: root
-    mode: 0755
+    owner: '{{ azcopy_file_owner }}'
+    group: '{{ azcopy_file_group }}'
+    mode: '{{ azcopy_file_mode }}'
 
 - name: azcopy - Delete temporary extract dir
   file:
-    path: '/tmp/azcopy_linux_amd64_{{ azcopy_version }}'
+    path: '/tmp/{{ azcopy_unzip_subfoldername }}'
     state: absent

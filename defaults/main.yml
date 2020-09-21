@@ -1,4 +1,12 @@
 ---
 # defaults file for ansible-role-azcopy
-azcopy_version: 10.5.0
-azcopy_download_url: https://aka.ms/downloadazcopy-v10-linux
+azcopy_version_major: 10
+azcopy_version: 10.6.0
+azcopy_download_url: https://aka.ms/downloadazcopy-v{{ azcopy_version_major }}-linux
+azcopy_unzip_subfoldername: 'azcopy_linux_amd64_{{ azcopy_version }}'
+azcopy_filename_zip: 'azcopy_linux_amd64_{{ azcopy_version }}.zip'
+azcopy_filename_exe: azcopy
+azcopy_install_dir: /usr/local/bin
+azcopy_file_owner: root
+azcopy_file_group: root
+azcopy_file_mode: 0775
